@@ -1,2 +1,3 @@
-tempDir/
+**/tempDir/
+**/temDir
 tempDir/*
