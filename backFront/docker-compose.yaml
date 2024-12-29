@@ -1,0 +1,24 @@
+services:
+  backend:
+    image: ${BACK_TAG}:${BACK_VERSION}
+    container_name: ${BACK_TAG}
+    build:
+      context: ../BackEnd/
+      dockerfile: Dockerfile
+    environment:
+      - FLASK_APP=${FLASK_APP}
+      - FLASK_ENV=${FLASK_ENV}
+    ports:
+      - ${BACK_PORT}:${BACK_PORT}
+
+  frontend:
+    image: ${FRONT_TAG}:${FRONT_VERSION}
+    container_name: ${FRONT_TAG}
+    build:
+      context: ../FrontEnd/
+      dockerfile: Dockerfile
+    environment:
+      - VITE_HOST=${VITE_HOST}
+      - VITE_PORT=${VITE_PORT}
+    ports:
+      - ${FRONT_PORT}:${FRONT_PORT}

@@ -15,7 +15,7 @@ export default defineConfig({
     proxy: {
       '^/api': {
         //target: 'http://api',
-        target: 'http://172.17.0.2:5000',
+        target: 'http://172.18.0.3:5000', //Dirección IP del contenedor de la API Backend
         changeOrigin: true
       }
     }

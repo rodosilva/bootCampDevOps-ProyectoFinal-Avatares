@@ -7,7 +7,7 @@ echo "FLASK_APP=$FLASK_APP"
 echo "FLASK_APP=$FLASK_ENV"
 
 export FLASK_APP
-export FLASK_APP
+export FLASK_ENV
 
 #docker network create -d bridge avatarNetwork
 
