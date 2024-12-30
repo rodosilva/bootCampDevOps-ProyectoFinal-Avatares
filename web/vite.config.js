@@ -15,7 +15,7 @@ export default defineConfig({
     proxy: {
       '^/api': {
         //target: 'http://api',
-        target: 'http://172.18.0.3:5000', //Dirección IP del contenedor de la API Backend
+        target: 'http://avatares-back:5000', //Dirección IP (Hostname) del contenedor de la API Backend
         changeOrigin: true
       }
     }

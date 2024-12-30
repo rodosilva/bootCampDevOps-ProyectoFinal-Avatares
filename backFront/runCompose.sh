@@ -7,7 +7,12 @@
 
 # Directorio de trabajo
 HOMEDIR=$(dirname $PWD)
-echo -e "\nHOMEDIR='$HOMEDIR'" >> .compose.env
+if [[ $(grep -e "HOMEDIR" .compose.env) ]]
+then
+  echo "HOMEDIR ya existe"
+  else
+    echo -e "\nHOMEDIR='$HOMEDIR'" >> .compose.env
+fi
 
 # Capturando las variables de entorno
 echo "========== Environment Variables =========="
