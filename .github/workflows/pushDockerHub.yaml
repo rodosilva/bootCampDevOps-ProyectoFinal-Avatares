@@ -46,4 +46,4 @@ jobs:
         with:
           context: ./BackEnd/
           push: true
-          tags: $BACK_VERSION
+          tags: rodosilva/avatares-back:$BACK_VERSION
