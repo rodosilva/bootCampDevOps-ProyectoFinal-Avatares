@@ -14,6 +14,7 @@ jobs:
       contents: read
       attestations: write
       id-token: write
+    
     steps:
       - name: Check out the repo
         uses: actions/checkout@v4
@@ -23,8 +24,6 @@ jobs:
           source ./backFront/.compose.env
           echo "BackEnd Version is: $BACK_VERSION"
           echo "FrontEnd Version is: $FRONT_VERSION"
-
-      - name: Environment Variables
         env:
           BACK_VERSION: $BACK_VERSION
           FRONT_VERSION: $FRONT_VERSION
