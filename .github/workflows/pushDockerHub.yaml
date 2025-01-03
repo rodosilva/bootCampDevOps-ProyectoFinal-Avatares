@@ -49,4 +49,4 @@ jobs:
         with:
           context: ./BackEnd/
           push: true
-          tags: rodosilva/avatares-back:$BACK_VERSION
+          tags: rodosilva/avatares-back:1.0.0
