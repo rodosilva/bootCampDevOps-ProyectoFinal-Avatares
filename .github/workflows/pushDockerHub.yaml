@@ -25,6 +25,8 @@ jobs:
           source ./backFront/.compose.env
           echo "BackEnd Version is: $BACK_VERSION"
           echo "FrontEnd Version is: $FRONT_VERSION"
+          export BACK_VERSION
+          export FRONT_VERSION
         env:
           BACK_VERSION: $BACK_VERSION
           FRONT_VERSION: $FRONT_VERSION
@@ -43,10 +45,8 @@ jobs:
 
       - name: Build and push Docker image
         id: push
-        env:
-          BACK_VERSION: $BACK_VERSION
         uses: docker/build-push-action@v5
         with:
           context: ./BackEnd/
           push: true
-          tags: rodosilva/avatares-back:${BACK_VERSION}
+          tags: rodosilva/avatares-back:$BACK_VERSION
