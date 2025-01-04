@@ -14,13 +14,6 @@ jobs:
       contents: read
       attestations: write
       id-token: write
-    run: |
-      source ./backFront/.compose.env
-      echo "BackEnd Version is: $BACK_VERSION"
-      echo "FrontEnd Version is: $FRONT_VERSION"
-    env:
-      BACK_VERSION: $BACK_VERSION
-      FRONT_VERSION: $FRONT_VERSION
 
     steps:
       - name: Check out the repo
@@ -40,6 +33,13 @@ jobs:
 
       - name: Build and push Docker image
         id: push
+        run: |
+          source ./backFront/.compose.env
+          echo "BackEnd Version is: $BACK_VERSION"
+          echo "FrontEnd Version is: $FRONT_VERSION"
+        env:
+          BACK_VERSION: $BACK_VERSION
+          FRONT_VERSION: $FRONT_VERSION
         uses: docker/build-push-action@v5
         with:
           context: ./BackEnd/
