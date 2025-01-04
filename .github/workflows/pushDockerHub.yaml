@@ -27,7 +27,6 @@ jobs:
           echo "FRONT_VERSION=$FRONT_VERSION"
           echo "BACK_VERSION=$BACK_VERSION" >> $GITHUB_ENV
           echo "FRONT_VERSION=$FRONT_VERSION" >> $GITHUB_ENV
-
         env:
           BACK_VERSION: $BACK_VERSION
           FRONT_VERSION: $FRONT_VERSION
@@ -50,4 +49,4 @@ jobs:
         with:
           context: ./BackEnd/
           push: true
-          tags: rodosilva/avatares-back:$BACK_VERSION
+          tags: rodosilva/avatares-back:${{env.BACK_VERSION}}
