@@ -19,6 +19,19 @@ jobs:
       - name: Check out the repo
         uses: actions/checkout@v4
 
+      - name: Setting Environment Variables
+        id: envVariables
+        run: |
+          source ./backFront/.compose.env
+          echo "BACK_VERSION=$BACK_VERSION"
+          echo "FRONT_VERSION=$FRONT_VERSION"
+          echo "BACK_VERSION=$BACK_VERSION" >> $GITHUB_ENV
+          echo "FRONT_VERSION=$FRONT_VERSION" >> $GITHUB_ENV
+
+        env:
+          BACK_VERSION: $BACK_VERSION
+          FRONT_VERSION: $FRONT_VERSION
+
       - name: Log in to Docker Hub
         uses: docker/login-action@v3
         with:
@@ -33,13 +46,6 @@ jobs:
 
       - name: Build and push Docker image
         id: push
-        run: |
-          source ./backFront/.compose.env
-          echo "BackEnd Version is: $BACK_VERSION"
-          echo "FrontEnd Version is: $FRONT_VERSION"
-        env:
-          BACK_VERSION: $BACK_VERSION
-          FRONT_VERSION: $FRONT_VERSION
         uses: docker/build-push-action@v5
         with:
           context: ./BackEnd/
