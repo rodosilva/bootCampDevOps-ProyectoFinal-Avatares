@@ -23,13 +23,18 @@ jobs:
         id: envVariables
         run: |
           source ./backFront/.compose.env
+
           echo "BACK_VERSION=$BACK_VERSION"
           echo "FRONT_VERSION=$FRONT_VERSION"
+          echo "NAMESPACE"=$NAMESPACE
+          echo "BACK_TAG=$BACK_TAG"
+          echo "FRONT_TAG=$FRONT_TAG"
+
           echo "BACK_VERSION=$BACK_VERSION" >> $GITHUB_ENV
           echo "FRONT_VERSION=$FRONT_VERSION" >> $GITHUB_ENV
-        env:
-          BACK_VERSION: $BACK_VERSION
-          FRONT_VERSION: $FRONT_VERSION
+          echo "NAMESPACE=$NAMESPACE" >> $GITHUB_ENV
+          echo "BACK_TAG=$BACK_TAG" >> $GITHUB_ENV
+          echo "FRONT_TAG=$FRONT_TAG" >> $GITHUB_ENV
 
       - name: Log in to Docker Hub
         uses: docker/login-action@v3
@@ -37,16 +42,18 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-      - name: Extract metadata (tags, labels) for Docker
-        id: meta
-        uses: docker/metadata-action@v5
-        with:
-          images: rodosilva/avatares-back
-
-      - name: Build and push Docker image
+      - name: Build and push Docker image for BackEnd
         id: push
         uses: docker/build-push-action@v5
         with:
           context: ./BackEnd/
           push: true
-          tags: rodosilva/avatares-back:${{env.BACK_VERSION}}
+          tags: ${{env.NAMESPACE}}/${{env.BACK_TAG}}:${{env.BACK_VERSION}}
+
+      - name: Build and push Docker image for FrontEnd
+        id: push
+        uses: docker/build-push-action@v5
+        with:
+          context: ./FrontEnd/
+          push: true
+          tags: ${{env.NAMESPACE}}/${{env.FRONT_TAG}}:${{env.FRONT_VERSION}}
