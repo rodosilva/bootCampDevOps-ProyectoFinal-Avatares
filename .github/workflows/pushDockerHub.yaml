@@ -43,7 +43,7 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
       - name: Build and push Docker image for BackEnd
-        id: push
+        id: pushBack
         uses: docker/build-push-action@v5
         with:
           context: ./BackEnd/
@@ -51,7 +51,7 @@ jobs:
           tags: ${{env.NAMESPACE}}/${{env.BACK_TAG}}:${{env.BACK_VERSION}}
 
       - name: Build and push Docker image for FrontEnd
-        id: push
+        id: pushFront
         uses: docker/build-push-action@v5
         with:
           context: ./FrontEnd/
