@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Pod
+metadata:
+    name: avatares-back
+    labels:
+        app: avatares-back
+        type: back-end
+spec:
+    containers:
+        - name: avatares-back-container
+          image: rodosilva/avatares-back:1.0.0
+          ports:
+            - containerPort: 5000
+          envFrom:
+            - configMapRef:
+                name: configmap-avatares-back

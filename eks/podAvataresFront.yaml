@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Pod
+metadata:
+    name: avatares-front
+    labels:
+        app: avatares-front
+        type: front-end
+spec:
+    containers:
+        - name: avatares-front-container
+          image: rodosilva/avatares-front:1.0.0
+          ports:
+            - containerPort: 5173
+
+          envFrom:
+            - configMapRef:
+                name: configmap-avatares-front

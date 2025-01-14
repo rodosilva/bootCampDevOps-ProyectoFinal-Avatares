@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: configmap-avatares-back
+data:
+  FLASK_APP: app.py
+  FLASK_ENV: development
+  BACK_PORT: "5000"
