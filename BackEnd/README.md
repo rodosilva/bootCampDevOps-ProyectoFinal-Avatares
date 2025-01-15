@@ -5,7 +5,7 @@ Sin embargo, por si solo no desplegará la `Infraestructura` necesaria para cont
 
 El directorio `backFront` contiene el [docker-compose.yaml](../backFront/docker-compose.yaml). Dicho archivo utiliza el contenido de este directorio (`BackEnd`) junto al contenido de `FrontEnd` para así levantar a la aplicación de `Avatares` de forma local.
 
-## DESCRIPTION
+## DESCRIPCIÓN
 - [variables.sh](./variables.sh): Contiene a las variables y a las variables de entorno
 - [buildDocker.sh](./buildDocker.sh): Script para construir la Imagen Docker
 - [Dockerfile](./Dockerfile): Código base para la Imagen Docker

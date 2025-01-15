@@ -17,7 +17,7 @@ RUN npm install \
 # Copiando el resto de archivos
 COPY ./tempDir/web/ .
 
-# Contruir la aplicación
+# Construir la aplicación
 RUN npm run build
 
 # Declarando el puerto que debería usarse
