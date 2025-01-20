@@ -27,4 +27,4 @@ echo "Mostrando URL del LoadBalancer para ver la APP"
 echo "=============================================="
 sleep 15
 lb=$(kubectl get services | awk 'FNR == 3 {print $4}')
-echo "La URL es: $lb:5173"
+echo "La URL es: http://$lb:5173"

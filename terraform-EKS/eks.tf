@@ -39,14 +39,18 @@ module "eks" {
       capacity_type  = "SPOT"
 
       tags = {
-        ExtraTag = "helloworld"
+        ExtraTag = "Avatares"
       }
     }
   }
 
   tags = local.tags
 
+  node_security_group_tags = {
+    "kubernetes.io/cluster/${local.name}" = null
+  }
+
   create_iam_role = false
-  iam_role_arn = "arn:aws:iam::654654309110:role/EKSClusterRole"
+  iam_role_arn = "arn:aws:iam::710434794054:role/eksClusterRole"
   create_cloudwatch_log_group = false
 }
